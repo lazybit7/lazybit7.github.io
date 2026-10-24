@@ -1,0 +1,301 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Abhinav Singh (LazyBit7)</title>
+  <meta name="description" content="Abhinav Singh (handle: LazyBit7) — Staff Software Engineer.">
+  <meta name="color-scheme" content="dark light">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+  <script>
+    (function () {
+      var root = document.documentElement;
+      var saved = null;
+      try { saved = localStorage.getItem("theme"); } catch (e) {}
+      root.dataset.theme = saved === "light" ? "light" : "dark";
+    })();
+  </script>
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <a class="brand" href="#top" aria-label="Abhinav Singh × LazyBit7, back to top">
+      <span class="brand-name">Abhinav Singh</span>
+      <span class="brand-x" aria-hidden="true">×</span>
+      <span class="brand-code">LazyBit<span class="brand-seven">7</span></span>
+    </a>
+    <div class="header-right">
+    <nav aria-label="Sections">
+      <ul class="nav-list">
+        <li><a href="#about" data-node="4">about</a></li>
+        <li><a href="#resume" data-node="5">resume</a></li>
+        <li><a href="#sports" data-node="6">sports</a></li>
+        <li><a href="#lazy" data-node="7">lazy?</a></li>
+      </ul>
+    </nav>
+    <button type="button" class="theme-toggle js-only" id="theme-toggle" aria-label="Switch to light theme" title="Toggle theme">☀️</button>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="top" aria-labelledby="hero-title">
+      <h1 id="hero-title">Abhinav Singh</h1>
+      <p class="tagline">
+        <span class="accent">LazyBit7</span>
+      </p>
+
+      <p class="eyebrow">// get to know me through lazy propagation in a segment tree</p>
+      <p class="hero-hint js-only">
+        A range update <code>reveal(0, 7)</code> was applied — but this site is lazy, so it only tagged the root.
+        Click a node to <code>push_down()</code> and load what's underneath.
+      </p>
+
+      <div class="tree js-only" id="tree" role="group" aria-label="Segment tree navigation">
+        <svg class="tree-edges" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"></svg>
+      </div>
+
+      <div class="tree-controls js-only">
+        <button type="button" class="btn" id="eager-btn">be eager (push all)</button>
+        <button type="button" class="btn btn-ghost" id="reset-btn">reset</button>
+        <span class="push-count">push_down calls: <strong id="push-count">0</strong>/7</span>
+      </div>
+
+      <ol class="log js-only" id="log" aria-live="polite" aria-label="Operation log"></ol>
+    </section>
+
+    <section class="lazy-section" id="about" aria-labelledby="about-title">
+      <h2 id="about-title"><span class="range">[0,1]</span> about</h2>
+      <div class="two-col">
+        <div>
+          <p class="lead">Hi, I'm <strong>Abhinav</strong> — my handle is <strong class="accent">LazyBit7</strong>.</p>
+          <p>
+            The handle comes from <a href="#lazy" data-node="7">lazy propagation</a> — the trick behind my
+            most memorable win in competitive programming.
+          </p>
+          <p>
+            <a href="#resume" data-node="5">Staff Software Engineer</a> at LinkedIn. 10+ years of ads and
+            distributed systems; lately, AI agents.
+          </p>
+          <p>
+            Off the keyboard you'll find me <a href="#sports" data-node="6">on a court</a> or (cautiously) on a ski slope.
+          </p>
+        </div>
+        <ul class="facts">
+          <li><span aria-hidden="true">📍</span> Sunnyvale, CA</li>
+          <li><span aria-hidden="true">🧑‍💻</span> Staff SWE @ LinkedIn</li>
+          <li><span aria-hidden="true">🤖</span> Agentic AI · Ads Platforms · Distributed systems</li>
+          <li><span aria-hidden="true">🔗</span> <a href="https://www.linkedin.com/in/abhinavsingh2014/" rel="noopener">LinkedIn</a></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="lazy-section" id="resume" aria-labelledby="resume-title">
+      <div class="section-head">
+        <h2 id="resume-title"><span class="range">[2,3]</span> resume</h2>
+        <button type="button" class="btn js-only" id="print-btn">Print / Save as PDF</button>
+      </div>
+
+      <div class="resume">
+        <header class="resume-head">
+          <p class="resume-name">Abhinav Singh</p>
+          <p class="resume-contact">
+            Sunnyvale, CA · <a class="icon-link" href="https://www.linkedin.com/in/abhinavsingh2014/" rel="noopener" aria-label="LinkedIn profile" title="LinkedIn"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false"><path fill="currentColor" d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg><span class="print-only">linkedin.com/in/abhinavsingh2014</span></a>
+          </p>
+        </header>
+
+        <h3>Work Experience</h3>
+        <p class="employer"><strong>LinkedIn</strong> <span class="muted">· Mountain View, CA · 2014 – Current</span></p>
+        <ol class="timeline">
+          <li>
+            <span class="when">Mar 2023 – Current</span>
+            <span><strong>Staff Software Engineer</strong> — Lead Gen Platform, Advertiser Retention, Marketing Agent</span>
+          </li>
+          <li>
+            <span class="when">Jul 2017 – Mar 2023</span>
+            <span><strong>Senior Software Engineer</strong> — Ads Monetization, Lead Gen Platform</span>
+          </li>
+          <li>
+            <span class="when">Mar 2017 – Jul 2017</span>
+            <span><strong>Senior Software Engineer</strong> — Unified Content Filtering Platform</span>
+          </li>
+          <li>
+            <span class="when">Jul 2014 – Mar 2017</span>
+            <span><strong>Software Engineer</strong> — Unified Content Filtering Platform</span>
+          </li>
+        </ol>
+
+        <h3>Skill Set</h3>
+        <dl class="skills">
+          <dt>Languages</dt>
+          <dd>
+            <ul class="tags">
+              <li>C++</li><li>Python</li><li>Java</li><li>Scala</li>
+            </ul>
+          </dd>
+          <dt>Tools &amp; Frameworks</dt>
+          <dd>
+            <ul class="tags">
+              <li><a href="https://www.langchain.com/" rel="noopener">LangChain</a></li>
+              <li><a href="https://www.langchain.com/langgraph" rel="noopener">LangGraph</a></li>
+              <li><a href="https://flyte.org/" rel="noopener">Flyte</a></li>
+              <li><a href="https://kafka.apache.org/" rel="noopener">Kafka</a></li>
+              <li><a href="https://beam.apache.org/" rel="noopener">Apache Beam</a></li>
+              <li><a href="https://flink.apache.org/" rel="noopener">Flink</a></li>
+              <li><a href="https://samza.apache.org/" rel="noopener">Samza</a></li>
+              <li><a href="https://github.com/linkedin/venice" rel="noopener">Venice</a></li>
+              <li><a href="https://pinot.apache.org/" rel="noopener">Pinot</a></li>
+              <li><a href="https://trino.io/" rel="noopener">Trino</a></li>
+              <li>Oracle</li><li>MySQL</li>
+            </ul>
+          </dd>
+        </dl>
+
+        <h3>Skill Experience</h3>
+        <ol class="expertise">
+          <li>
+            <strong>Agentic AI Systems</strong>
+            <p>Production agent architecture, <strong>multi-runtime agent harnesses</strong>, tool orchestration,
+            <strong>LLM-as-a-judge evaluation</strong>, human-in-the-loop safety, authorization, and latency optimization.</p>
+          </li>
+          <li>
+            <strong>Platform Architecture &amp; Tech Leadership</strong>
+            <p><strong>0 → 1 platform design</strong>, multi-quarter technical direction, cross-service integrations,
+            backwards-compatible migrations, API evolution, and multi-engineer execution.</p>
+          </li>
+          <li>
+            <strong>Distributed Systems &amp; Performance Engineering</strong>
+            <p>APIs, streaming pipelines, caching, messaging, storage, production reliability, and performance optimization at scale.</p>
+          </li>
+        </ol>
+
+        <h3>Selected Work Projects</h3>
+        <article class="project">
+          <h4>LinkedIn Marketing Agent <span class="muted">— leading a team of 5+ engineers</span></h4>
+          <ul>
+            <li>Built and productionized LinkedIn's Marketing Agent, spanning agent architecture, evaluation, safety,
+              and advertiser-facing workflows; <strong>set technical direction</strong> across multiple workstreams.</li>
+            <li>Drove <strong>cross-functional</strong> execution with AI Infrastructure, Data Science, Product, Marketing, and Legal partners.</li>
+            <li>Built and evaluated multiple agent execution paths, including
+              <strong><a href="https://www.langchain.com/" rel="noopener">LangChain</a>/<a href="https://www.langchain.com/langgraph" rel="noopener">LangGraph</a></strong>,
+              a prompt-driven <strong>ReAct loop</strong>, and <strong>Copilot/CAS</strong> treatments for comparative evaluation across agent runtimes.</li>
+            <li>Built the Marketing Agent's <strong>analytics evaluation stack</strong>: an <strong>LLM-as-a-judge</strong> with a
+              policy-grounded 1–5 rubric, deterministic policy/regression graders, a golden dataset, and nightly
+              <a href="https://flyte.org/" rel="noopener">Flyte</a> regression; encoded a
+              <strong class="metric">κ ≥ 0.8</strong> human-agreement gate before judged dimensions could affect ship decisions.</li>
+            <li>Reduced p50 response latency from <strong class="metric">180s → 40s</strong>.</li>
+          </ul>
+        </article>
+
+        <article class="project">
+          <h4>Lead Generation Platform — Tech Lead <span class="muted">— leading a team of 8 engineers across multiple workstreams</span></h4>
+          <ul>
+            <li>Led <strong>cross-functional</strong> execution across <strong class="metric">7+ teams</strong> including Marketing, Product, Legal,
+              Streams Infrastructure, Data Infrastructure, Ads AI, and LinkedIn Feed teams.</li>
+            <li><strong>Oversaw</strong> major engineering projects across form serving, lead processing, CRM integrations,
+              compliance, tracking, and external APIs.</li>
+            <li>Built and scaled Lead Generation ads from <strong class="metric">$0 → $1B+ per year</strong>, growing the business
+              to roughly one-third of LinkedIn Ads revenue.</li>
+            <li>Launched <strong>Lead Generation for Events in 2 months</strong> and migrated
+              <strong class="metric">100% of lead submissions</strong> across iOS, Android, and Web with no metric degradation.</li>
+            <li>Expanded the platform through external Lead Gen/Event APIs and third-party CRM integrations.</li>
+            <li>Reduced <strong class="metric">API traffic by over 50%</strong> and <strong class="metric">database writes by 10×</strong>.</li>
+          </ul>
+        </article>
+
+        <article class="project">
+          <h4>Carousel Ads / Multi-Card Sponsored Content</h4>
+          <ul>
+            <li><strong>Co-inventor on <a href="https://patents.google.com/patent/US10997624B2/en" rel="noopener">U.S. Patent 10,997,624</a></strong>,
+              <em>Optimization of network-transferred multi-card content items</em>.</li>
+            <li><strong>Main contributor and lead author</strong> of the Ads Multi Content Platform, redesigning the content
+              architecture for Carousel Ads and enabling video, editing, mixed media, and future optimization capabilities.</li>
+            <li>Designed the platform across serving, rendering, tracking, reporting, content review, Campaign Manager,
+              and content lifecycle management.</li>
+          </ul>
+        </article>
+
+        <h3>Education</h3>
+        <ol class="timeline">
+          <li>
+            <span class="when">2010 – 2014</span>
+            <span><strong>B.E. Computer Science</strong>, Birla Institute of Technology and Science, Pilani</span>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="lazy-section" id="sports" aria-labelledby="sports-title">
+      <h2 id="sports-title"><span class="range">[4,5]</span> sports</h2>
+      <p class="muted">The one place you won’t catch me being lazy.</p>
+      <ul class="sport-grid">
+        <li class="sport-card">
+          <span class="sport-emoji" aria-hidden="true">🏸</span>
+          <h3>Badminton</h3>
+          <span class="status">playing</span>
+          <p>I've played for the <strong>Microsoft team</strong> in the <a href="https://www.facebook.com/BACBC/" target="_blank" rel="noopener">Bay Area Corporate Badminton Challenge</a> since 2018.</p>
+        </li>
+        <li class="sport-card">
+          <span class="sport-emoji" aria-hidden="true">🎾</span>
+          <h3>Tennis</h3>
+          <span class="status">playing</span>
+          <p>Currently debugging my tennis technique. The original implementation had some issues.</p>
+        </li>
+        <li class="sport-card">
+          <span class="sport-emoji" aria-hidden="true">🏓</span>
+          <h3>Table Tennis</h3>
+          <span class="status">playing</span>
+          <p>Favorite player: <strong>"The Python"</strong> <a href="https://en.wikipedia.org/wiki/Xu_Xin_(table_tennis)" target="_blank" rel="noopener">Xu Xin</a>.</p>
+        </li>
+        <li class="sport-card">
+          <span class="sport-emoji" aria-hidden="true">🚴</span>
+          <h3>Cycling</h3>
+          <span class="status status-paused">paused</span>
+          <p>On hold after a toe injury from trying to pull off a jump in <a href="https://en.wikipedia.org/wiki/Snowmass_Village,_Colorado" target="_blank" rel="noopener">Snowmass</a>.</p>
+        </li>
+        <li class="sport-card">
+          <span class="sport-emoji" aria-hidden="true">⛷️</span>
+          <h3>Skiing</h3>
+          <span class="status status-learning">learning</span>
+          <p>A friend talked me into an Ikon Pass. Now I'm financially committed to learning how to ski.</p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="lazy-section" id="lazy" aria-labelledby="lazy-title">
+      <h2 id="lazy-title"><span class="range">[6,7]</span> why “lazy”?</h2>
+      <div class="two-col">
+        <div>
+          <p>
+            My favorite algorithmic trick: knowing which work can wait.
+          </p>
+          <p>
+            In a <strong>segment tree</strong> (or a Fenwick / binary indexed tree), a range update could touch every
+            element in the range. <strong><a href="https://www.geeksforgeeks.org/dsa/lazy-propagation-in-segment-tree/" target="_blank" rel="noopener">Lazy propagation</a></strong> refuses to do that work up front: it drops a
+            <span class="tag-inline">lazy tag</span> on the highest nodes that cover the range and moves on.
+          </p>
+          <p>
+            Only when a later query actually walks through a node does it <code>push_down()</code> the pending tag to
+            its children. Updates and queries both stay <strong>O(log n)</strong>.
+          </p>
+        </div>
+<pre class="code" aria-label="push_down example in C++"><code><span class="c">// apply pending work only when needed</span>
+<span class="k">void</span> push_down(<span class="k">int</span> node) {
+  <span class="k">if</span> (lazy[node] == 0) <span class="k">return</span>;
+  <span class="k">for</span> (<span class="k">int</span> child : {2*node, 2*node+1}) {
+    tree[child] += lazy[node] * len(child);
+    lazy[child] += lazy[node];
+  }
+  lazy[node] = 0;  <span class="c">// done. back to sleep.</span>
+}</code></pre>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>© 2026 Abhinav Singh (LazyBit7) · built lazily with plain HTML, CSS &amp; JS</p>
+  </footer>
+</body>
+</html>
