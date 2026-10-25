@@ -29,15 +29,15 @@
     4: { label: "about", section: "about" },
     5: { label: "resume", section: "resume" },
     6: { label: "sports", section: "sports" },
-    7: { label: "lazy?", section: "lazy" },
+    7: { label: "photos", section: "photos" },
     8: { emoji: "📍", fact: "based in Sunnyvale, CA" },
     9: { emoji: "🧑‍💻", fact: "Staff Software Engineer @ LinkedIn" },
     10: { emoji: "📣", fact: "10+ years in ads · AMA" },
     11: { emoji: "📜", fact: "Inventor! U.S. Patent 10,997,624", href: "https://patents.google.com/patent/US10997624B2/en" },
     12: { emoji: "🏸", fact: "badminton · tennis · table tennis" },
     13: { emoji: "⛷️", fact: "learning to ski" },
-    14: { emoji: "⏱️", fact: "O(log n) per update and query" },
-    15: { emoji: "😴", fact: "lazy propagation: defer updates to child nodes until they're accessed" },
+    14: { emoji: "📷", fact: "photos: first frames coming soon" },
+    15: { emoji: "📝", fact: "photography notes: coming soon" },
   };
 
   const tree = document.getElementById("tree");
@@ -135,6 +135,10 @@
     while (logEl.children.length > 5) logEl.firstElementChild.remove();
   }
 
+  function logCompletion() {
+    log(`Fully propagated. <a href="#lazy">→ The trick behind the tree</a>`);
+  }
+
   async function pushDown(i, animate = true) {
     if (!pending.has(i) || isLeaf(i)) return;
     const kids = [2 * i, 2 * i + 1];
@@ -206,6 +210,7 @@
       log(`query(${fmt(target)}): already fresh — nothing to push 😴`);
     }
     if (meta.section) openSection(meta.section, { scroll, pushHistory });
+    if (pushed && pushes === INTERNAL) logCompletion();
   }
 
   let queue = Promise.resolve();
@@ -217,12 +222,12 @@
   async function eager() {
     log(`be_eager(): pushing everything…`);
     for (let i = 1; i <= INTERNAL; i++) await pushDown(i, true);
-    ["about", "resume", "sports", "lazy"].forEach((id) =>
-      document.getElementById(id).classList.add("is-revealed")
+    Object.values(META).filter((meta) => meta.section).forEach((meta) =>
+      document.getElementById(meta.section).classList.add("is-revealed")
     );
     document.querySelectorAll(".nav-list a").forEach((a) => a.removeAttribute("aria-current"));
     document.querySelectorAll(".node.is-open").forEach((n) => n.classList.remove("is-open"));
-    log(`all ${INTERNAL} internal nodes pushed. so much work 🥱`);
+    logCompletion();
   }
 
   function reset() {
@@ -255,14 +260,28 @@
   });
   document.getElementById("print-btn").addEventListener("click", () => window.print());
 
+  const isModifiedClick = (e) =>
+    e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey;
+
   document.querySelectorAll("a[data-node]").forEach((a) => {
     a.addEventListener("click", (e) => {
+      if (isModifiedClick(e)) return;
       e.preventDefault();
       enqueue(Number(a.dataset.node), { scroll: true });
     });
   });
 
+  document.addEventListener("click", (e) => {
+    if (isModifiedClick(e) || !(e.target instanceof Element) || !e.target.closest('a[href="#lazy"]')) return;
+    e.preventDefault();
+    queue = queue.then(() => openSection("lazy", { scroll: true, pushHistory: true }));
+  });
+
   function revealFromHash() {
+    if (location.hash === "#lazy") {
+      queue = queue.then(() => openSection("lazy", { scroll: true, pushHistory: false }));
+      return;
+    }
     const fromHash = Object.keys(META).find((k) => META[k].section && `#${META[k].section}` === location.hash);
     if (fromHash) enqueue(Number(fromHash), { scroll: true, animate: false, pushHistory: false });
   }
