@@ -16,6 +16,26 @@
     syncThemeButton();
   });
 
+  const seasonBtn = document.getElementById("season-toggle");
+  const syncSeasonButton = () => {
+    const halloween = root.dataset.season === "halloween";
+    if (seasonBtn) {
+      seasonBtn.setAttribute("aria-pressed", String(halloween));
+      seasonBtn.title = halloween ? "Use normal design" : "Bring back pumpkins";
+      seasonBtn.hidden = new Date().getMonth() !== 9;
+    }
+    document.querySelector('link[rel="icon"]').setAttribute("href",
+      halloween ? "assets/pumpkin.svg" : "assets/favicon.svg");
+  };
+  syncSeasonButton();
+  seasonBtn?.addEventListener("click", () => {
+    const halloween = root.dataset.season === "halloween";
+    if (halloween) delete root.dataset.season;
+    else root.dataset.season = "halloween";
+    try { localStorage.setItem("halloween-disabled", String(halloween)); } catch (e) { /* private mode */ }
+    syncSeasonButton();
+  });
+
   const N = 8; // leaves; root covers [0, N-1]
   const INTERNAL = N - 1;
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");

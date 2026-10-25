@@ -23,6 +23,42 @@ can use **Deploy from a branch**, with **main** and **/ (root)**.
 
 Local changes are not published until they are committed and pushed.
 
+## October pumpkin edition
+
+Every October, the site automatically switches to a playful Halloween edition:
+warm orange light/dark palettes, a seasonal hero badge,
+pumpkin-stem tree details, a pumpkin favicon, and a little pumpkin cursor on
+fine-pointer devices (including links and buttons). Text keeps its selection
+cursor, touch behavior is unchanged, and unsupported custom cursors fall back
+to native cursors. The existing light/dark preference still applies.
+
+During October, the **pumpkin toggle next to the light/dark button** switches
+the entire edition off or on, including its cursor and favicon, without changing
+the light/dark theme. Its pressed state indicates whether Halloween is enabled;
+its tooltip offers **Use normal design** or **Bring back pumpkins**.
+Your choice is saved in `localStorage` as `halloween-disabled` and remembered
+across reloads and future Octobers. If browser storage is unavailable, switching
+still works for the current page. The control is hidden outside October.
+
+The early script in `index.html` checks the visitor's **local month at page
+load**, every year. October enables `data-season="halloween"` unless you have
+chosen the normal design; a page loaded outside October always uses the
+original design. An already-open page changes season
+on its next reload, not at midnight. With JavaScript disabled, the original
+design remains available. Resume printing stays unchanged.
+
+Seasonal colors and decorations are scoped to screen media in `styles.css`.
+The favicon and 32-pixel cursor share `assets/pumpkin.svg`.
+There are no extra dependencies or build steps.
+
+To preview outside October, use your browser's automation clock/date override
+to set an October local date **before navigation**, then load the site. For a
+visual-only preview in DevTools, set
+`document.documentElement.dataset.season = "halloween"`; this previews the
+styles and cursor but does not run favicon initialization. Reload to restore
+the real-date behavior. Check September 30 / October 1 and October 31 /
+November 1 when changing activation logic.
+
 ## Tree topics
 
 The tree keeps eight leaves, the root range `[0,7]`, and seven `push_down` calls.
