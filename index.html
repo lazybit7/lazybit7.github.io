@@ -19,7 +19,6 @@
       } catch (e) {}
       if (new Date().getMonth() === 9 && !halloweenDisabled) {
         root.dataset.season = "halloween";
-        document.querySelector('link[rel="icon"]').setAttribute("href", "assets/pumpkin.svg");
       }
       root.dataset.theme = saved === "light" ? "light" : "dark";
     })();
@@ -30,39 +29,37 @@
   <a class="skip-link" href="#main">Skip to content</a>
   <span class="pumpkin-trail" aria-hidden="true" hidden></span>
 
-  <header class="site-header">
+  <header>
     <a class="brand" href="#top" aria-label="Abhinav Singh · LazyBit7, back to top">
       <span class="brand-name">Abhinav Singh</span>
       <span class="brand-x" aria-hidden="true">·</span>
-      <span class="brand-code">LazyBit<span class="brand-seven">7</span></span>
+      <span>LazyBit<span class="brand-seven">7</span></span>
     </a>
-    <div class="header-right">
-    <nav aria-label="Sections">
-      <ul class="nav-list">
-        <li><a href="#about" data-node="4">about</a></li>
-        <li><a href="#resume" data-node="5">resume</a></li>
-        <li><a href="#sports" data-node="6">sports</a></li>
-        <li><a href="#photos" data-node="7">photos</a></li>
-        <li><a href="#lazy">lazy propagation</a></li>
-      </ul>
-    </nav>
-    <div class="appearance-controls js-only">
-      <button type="button" class="theme-toggle" id="season-toggle" aria-label="Halloween edition" aria-pressed="true" title="Use normal design" hidden>🎃</button>
-      <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Switch to light theme" title="Toggle theme">☀️</button>
-    </div>
+    <div>
+      <nav aria-label="Sections">
+        <ul>
+          <li><a href="#about">about</a></li>
+          <li><a href="#resume">resume</a></li>
+          <li><a href="#sports">sports</a></li>
+          <li><a href="#photos">photos</a></li>
+          <li><a href="#lazy">lazy propagation</a></li>
+        </ul>
+      </nav>
+      <div class="appearance-controls js-only">
+        <button type="button" class="theme-toggle" id="season-toggle" aria-label="Halloween edition" aria-pressed="true" title="Use normal design" hidden>🎃</button>
+        <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Switch to light theme" title="Toggle theme">☀️</button>
+      </div>
     </div>
   </header>
 
   <main id="main">
-    <section class="hero" id="top" aria-labelledby="hero-title">
-      <div class="halloween-intro">
+    <section id="top" aria-labelledby="hero-title">
+      <aside>
         <p class="season-badge">October exclusive · pumpkin patch edition</p>
         <p class="season-note">A little spooky. Still lazy.</p>
-      </div>
+      </aside>
       <h1 id="hero-title">Abhinav Singh</h1>
-      <p class="tagline">
-        <span class="accent">LazyBit7</span>
-      </p>
+      <p class="tagline">LazyBit7</p>
 
       <p class="eyebrow">// get to know me through <a href="#lazy">lazy propagation</a> in a segment tree</p>
       <p class="hero-hint js-only">
@@ -71,7 +68,7 @@
       </p>
 
       <div class="tree js-only" id="tree" role="group" aria-label="Segment tree navigation">
-        <svg class="tree-edges" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"></svg>
+        <svg viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"></svg>
       </div>
 
       <div class="tree-controls js-only">
@@ -93,11 +90,11 @@
             most memorable win in competitive programming.
           </p>
           <p>
-            <a href="#resume" data-node="5">Staff Software Engineer</a> at LinkedIn. 10+ years of ads and
+            <a href="#resume">Staff Software Engineer</a> at LinkedIn. 10+ years of ads and
             distributed systems; lately, AI agents.
           </p>
           <p>
-            Off the keyboard you'll find me <a href="#sports" data-node="6">on a court</a> or (cautiously) on a ski slope.
+            Off the keyboard you'll find me <a href="#sports">on a court</a> or (cautiously) on a ski slope.
           </p>
         </div>
         <ul class="facts">
@@ -110,13 +107,13 @@
     </section>
 
     <section class="lazy-section" id="resume" aria-labelledby="resume-title">
-      <div class="section-head">
+      <header>
         <h2 id="resume-title"><span class="range">[2,3]</span>resume</h2>
         <button type="button" class="btn js-only" id="print-btn">Print / Save as PDF</button>
-      </div>
+      </header>
 
-      <div class="resume">
-        <header class="resume-head">
+      <article>
+        <header>
           <p class="resume-name">Abhinav Singh</p>
           <p class="resume-contact">
             Sunnyvale, CA · <a class="icon-link" href="https://www.linkedin.com/in/abhinavsingh2014/" rel="noopener" aria-label="LinkedIn profile" title="LinkedIn"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false"><path fill="currentColor" d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg><span class="print-only">linkedin.com/in/abhinavsingh2014</span></a>
@@ -124,22 +121,22 @@
         </header>
 
         <h3>Work Experience</h3>
-        <p class="employer"><strong>LinkedIn</strong> <span class="muted">· Mountain View, CA · 2014 – Current</span></p>
+        <p class="employer"><strong>LinkedIn</strong> <span class="muted">· Mountain View, CA · <time datetime="2014">2014</time> – Current</span></p>
         <ol class="timeline">
           <li>
-            <span class="when">Mar 2023 – Current</span>
+            <span class="when"><time datetime="2023-03">Mar 2023</time> – Current</span>
             <span><strong>Staff Software Engineer</strong> — Lead Gen Platform, Advertiser Retention, Marketing Agent</span>
           </li>
           <li>
-            <span class="when">Jul 2017 – Mar 2023</span>
+            <span class="when"><time datetime="2017-07">Jul 2017</time> – <time datetime="2023-03">Mar 2023</time></span>
             <span><strong>Senior Software Engineer</strong> — Ads Monetization, Lead Gen Platform</span>
           </li>
           <li>
-            <span class="when">Mar 2017 – Jul 2017</span>
+            <span class="when"><time datetime="2017-03">Mar 2017</time> – <time datetime="2017-07">Jul 2017</time></span>
             <span><strong>Senior Software Engineer</strong> — Unified Content Filtering Platform</span>
           </li>
           <li>
-            <span class="when">Jul 2014 – Mar 2017</span>
+            <span class="when"><time datetime="2014-07">Jul 2014</time> – <time datetime="2017-03">Mar 2017</time></span>
             <span><strong>Software Engineer</strong> — Unified Content Filtering Platform</span>
           </li>
         </ol>
@@ -189,7 +186,7 @@
         </ol>
 
         <h3>Selected Work Projects</h3>
-        <article class="project">
+        <article>
           <h4>LinkedIn Marketing Agent <span class="muted">— leading a team of 5+ engineers</span></h4>
           <ul>
             <li>Built and productionized LinkedIn's Marketing Agent, spanning agent architecture, evaluation, safety,
@@ -206,7 +203,7 @@
           </ul>
         </article>
 
-        <article class="project">
+        <article>
           <h4>Lead Generation Platform — Tech Lead <span class="muted">— leading a team of 8 engineers across multiple workstreams</span></h4>
           <ul>
             <li>Led <strong>cross-functional</strong> execution across <strong class="metric">7+ teams</strong> including Marketing, Product, Legal,
@@ -222,7 +219,7 @@
           </ul>
         </article>
 
-        <article class="project">
+        <article>
           <h4>Carousel Ads / Multi-Card Sponsored Content</h4>
           <ul>
             <li><strong>Co-inventor on <a href="https://patents.google.com/patent/US10997624B2/en" rel="noopener">U.S. Patent 10,997,624</a></strong>,
@@ -237,42 +234,42 @@
         <h3>Education</h3>
         <ol class="timeline">
           <li>
-            <span class="when">2010 – 2014</span>
+            <span class="when"><time datetime="2010">2010</time> – <time datetime="2014">2014</time></span>
             <span><strong>B.E. Computer Science</strong>, Birla Institute of Technology and Science, Pilani</span>
           </li>
         </ol>
-      </div>
+      </article>
     </section>
 
     <section class="lazy-section" id="sports" aria-labelledby="sports-title">
       <h2 id="sports-title"><span class="range">[4,5]</span>sports</h2>
       <p class="muted">The one place you won’t catch me being lazy.</p>
-      <ul class="sport-grid">
-        <li class="sport-card">
+      <ul>
+        <li>
           <span class="sport-emoji" aria-hidden="true">🏸</span>
           <h3>Badminton</h3>
           <span class="status">playing</span>
           <p>I've played for the <strong>Microsoft team</strong> in the <a href="https://www.facebook.com/BACBC/" target="_blank" rel="noopener">Bay Area Corporate Badminton Challenge</a> since 2018.</p>
         </li>
-        <li class="sport-card">
+        <li>
           <span class="sport-emoji" aria-hidden="true">🎾</span>
           <h3>Tennis</h3>
           <span class="status">playing</span>
           <p>Currently debugging my tennis technique. The original implementation had some issues.</p>
         </li>
-        <li class="sport-card">
+        <li>
           <span class="sport-emoji" aria-hidden="true">🏓</span>
           <h3>Table Tennis</h3>
           <span class="status">playing</span>
           <p>Favorite player: <strong>"The Python"</strong> <a href="https://en.wikipedia.org/wiki/Xu_Xin_(table_tennis)" target="_blank" rel="noopener">Xu Xin</a>.</p>
         </li>
-        <li class="sport-card">
+        <li>
           <span class="sport-emoji" aria-hidden="true">🚴</span>
           <h3>Cycling</h3>
           <span class="status status-paused">paused</span>
           <p>On hold after a toe injury from trying to pull off a jump in <a href="https://en.wikipedia.org/wiki/Snowmass_Village,_Colorado" target="_blank" rel="noopener">Snowmass</a>.</p>
         </li>
-        <li class="sport-card">
+        <li>
           <span class="sport-emoji" aria-hidden="true">⛷️</span>
           <h3>Skiing</h3>
           <span class="status status-learning">learning</span>
@@ -284,12 +281,12 @@
     <section class="lazy-section" id="photos" aria-labelledby="photos-title">
       <h2 id="photos-title"><span class="range">[6,7]</span>photography</h2>
       <p class="muted">First year behind the lens.</p>
-      <div class="photography-grid">
-        <article class="photography-panel" aria-labelledby="gallery-title">
+      <div>
+        <article aria-labelledby="gallery-title">
           <h3 id="gallery-title">Photos</h3>
           <p class="muted">First frames coming soon.</p>
         </article>
-        <article class="photography-panel" aria-labelledby="notes-title">
+        <article aria-labelledby="notes-title">
           <h3 id="notes-title">Field notes</h3>
           <p class="muted">Photography notes coming soon.</p>
         </article>
@@ -300,9 +297,7 @@
       <h2 id="lazy-title">Lazy Propagation</h2>
       <div class="two-col">
         <div>
-          <p>
-            My favorite algorithmic trick: knowing which work can wait.
-          </p>
+          <p>My favorite algorithmic trick: knowing which work can wait.</p>
           <p>
             In a <strong>segment tree</strong> (or a Fenwick / binary indexed tree), a range update could touch every
             element in the range. <strong><a href="https://www.geeksforgeeks.org/dsa/lazy-propagation-in-segment-tree/" target="_blank" rel="noopener">Lazy propagation</a></strong> refuses to do that work up front: it drops a
@@ -313,7 +308,7 @@
             its children. Updates and queries both stay <strong>O(log n)</strong>.
           </p>
         </div>
-<pre class="code" aria-label="push_down example in C++"><code><span class="c">// apply pending work only when needed</span>
+        <pre aria-label="push_down example in C++"><code><span class="c">// apply pending work only when needed</span>
 <span class="k">void</span> push_down(<span class="k">int</span> node) {
   <span class="k">if</span> (lazy[node] == 0) <span class="k">return</span>;
   <span class="k">for</span> (<span class="k">int</span> child : {2*node, 2*node+1}) {
@@ -326,8 +321,8 @@
     </section>
   </main>
 
-  <footer class="site-footer">
-    <p>© 2026 Abhinav Singh (LazyBit7) · built lazily with plain HTML, CSS &amp; JS</p>
+  <footer>
+    <p>© <time datetime="2026">2026</time> Abhinav Singh (LazyBit7) · built lazily with plain HTML, CSS &amp; JS</p>
   </footer>
 </body>
 </html>
