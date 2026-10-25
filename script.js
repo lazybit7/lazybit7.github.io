@@ -98,8 +98,6 @@
       seasonBtn.title = halloween ? "Use normal design" : "Bring back pumpkins";
       seasonBtn.hidden = new Date().getMonth() !== 9;
     }
-    document.querySelector('link[rel="icon"]').setAttribute("href",
-      halloween ? "assets/pumpkin.svg" : "assets/favicon.svg");
   };
   syncSeasonButton();
   seasonBtn?.addEventListener("click", () => {

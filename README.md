@@ -8,6 +8,7 @@ plain HTML, CSS, and JavaScript.
 - Interactive segment-tree navigation with lazy propagation.
 - About, resume, sports, and photography sections.
 - Light/dark themes and a print-friendly resume.
+- Full LazyBit7 wordmark favicon on a dark background, visible year-round.
 - Automatic October Halloween theme with a fading pumpkin cursor trail and opt-out.
 
 ## Local preview

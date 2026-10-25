@@ -6,7 +6,7 @@
   <title>Abhinav Singh · LazyBit7</title>
   <meta name="description" content="Abhinav Singh (handle: LazyBit7) — Staff Software Engineer.">
   <meta name="color-scheme" content="dark light">
-  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" sizes="128x128">
   <link rel="stylesheet" href="styles.css">
   <script>
     (function () {
@@ -19,7 +19,6 @@
       } catch (e) {}
       if (new Date().getMonth() === 9 && !halloweenDisabled) {
         root.dataset.season = "halloween";
-        document.querySelector('link[rel="icon"]').setAttribute("href", "assets/pumpkin.svg");
       }
       root.dataset.theme = saved === "light" ? "light" : "dark";
     })();
