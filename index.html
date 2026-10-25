@@ -12,7 +12,15 @@
     (function () {
       var root = document.documentElement;
       var saved = null;
-      try { saved = localStorage.getItem("theme"); } catch (e) {}
+      var halloweenDisabled = false;
+      try {
+        saved = localStorage.getItem("theme");
+        halloweenDisabled = localStorage.getItem("halloween-disabled") === "true";
+      } catch (e) {}
+      if (new Date().getMonth() === 9 && !halloweenDisabled) {
+        root.dataset.season = "halloween";
+        document.querySelector('link[rel="icon"]').setAttribute("href", "assets/pumpkin.svg");
+      }
       root.dataset.theme = saved === "light" ? "light" : "dark";
     })();
   </script>
@@ -37,12 +45,19 @@
         <li><a href="#lazy">lazy propagation</a></li>
       </ul>
     </nav>
-    <button type="button" class="theme-toggle js-only" id="theme-toggle" aria-label="Switch to light theme" title="Toggle theme">☀️</button>
+    <div class="appearance-controls js-only">
+      <button type="button" class="theme-toggle" id="season-toggle" aria-label="Halloween edition" aria-pressed="true" title="Use normal design" hidden>🎃</button>
+      <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Switch to light theme" title="Toggle theme">☀️</button>
+    </div>
     </div>
   </header>
 
   <main id="main">
     <section class="hero" id="top" aria-labelledby="hero-title">
+      <div class="halloween-intro">
+        <p class="season-badge">October exclusive · pumpkin patch edition</p>
+        <p class="season-note">A little spooky. Still lazy.</p>
+      </div>
       <h1 id="hero-title">Abhinav Singh</h1>
       <p class="tagline">
         <span class="accent">LazyBit7</span>
