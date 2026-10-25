@@ -243,13 +243,17 @@ html.js .lazy-section:not(.is-revealed) { display: none; }
   padding: 48px 0;
   border-top: 1px solid var(--border);
 }
+.lazy-section:focus { outline: none; }
 .lazy-section.is-revealed { animation: reveal 0.5s ease-out; }
 @keyframes reveal { from { opacity: 0; transform: translateY(12px); } }
 
 h2 { font: 700 1.6rem var(--mono); margin: 0 0 20px; }
 .range { color: var(--lazy); font-size: 0.8em; font-weight: 400; margin-right: 6px; }
-.section-head { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
-.section-head h2 { margin-bottom: 20px; }
+.section-head {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 12px; flex-wrap: wrap; margin-bottom: 20px;
+}
+.section-head h2 { margin: 0; }
 
 .two-col { display: grid; grid-template-columns: 1.4fr 1fr; gap: 32px; align-items: start; }
 .lead { font-size: 1.2rem; margin-top: 0; }
@@ -349,18 +353,46 @@ h2 { font: 700 1.6rem var(--mono); margin: 0 0 20px; }
 /* Responsive */
 @media (max-width: 720px) {
   .two-col { grid-template-columns: 1fr; }
+  .sport-grid { grid-template-columns: 1fr; }
+  #print-btn { display: none; }
   .timeline li, .skills { grid-template-columns: 1fr; gap: 0; }
   .skills dd { margin-bottom: 10px; }
   .when { line-height: 1.4; }
 }
-@media (max-width: 560px) {
-  .site-header { flex-direction: column; gap: 6px; padding-block: 8px; }
-  .nav-list a { padding: 4px 8px; font-size: 0.82rem; }
+@media screen and (max-width: 560px) {
+  html { scroll-padding-top: 104px; }
+  .site-header { flex-direction: column; gap: 8px; padding: 10px 16px; }
+  .nav-list { gap: 2px; }
+  .nav-list a {
+    display: flex; align-items: center; min-height: 44px;
+    padding: 8px 6px; font-size: 0.82rem;
+  }
+  .theme-toggle { width: 44px; height: 44px; flex-shrink: 0; }
+  main { padding-inline: 16px; }
+  .hero { padding-top: 32px; }
+  .hero h1 { margin-top: 0; }
+  .tagline { margin-bottom: 24px; }
+  .eyebrow, .hero-hint { text-align: left; }
+  .hero-hint { margin-bottom: 16px; }
+  .tree { height: 248px; margin-top: 16px; }
   .node { min-width: 0; padding: 4px 6px; font-size: 0.72rem; }
   .node.is-root { min-width: 0; font-size: 0.85rem; }
   .node-range { font-size: 0.6rem; }
   .node.is-leaf { width: 30px; height: 30px; font-size: 0.85rem; }
   .node-tag { right: -8px; font-size: 0.6rem; }
+  .tree-controls { gap: 12px 8px; margin-block: 16px; }
+  .push-count { flex-basis: 100%; }
+  .btn { min-height: 44px; }
+  .log { padding: 12px; }
+  .lazy-section { padding-block: 32px; }
+  .two-col { gap: 20px; }
+  .two-col > div > :last-child { margin-bottom: 0; }
+  .facts { padding: 16px; }
+  .section-head { margin-bottom: 16px; }
+  .resume { padding: 20px 16px; }
+  .timeline li { gap: 4px; padding-block: 8px; }
+  .sport-grid { gap: 12px; margin-top: 16px; }
+  .site-footer { margin-top: 24px; padding: 24px 16px 32px; }
 }
 
 /* Print: clean light resume only, fits on two pages */
