@@ -156,11 +156,20 @@ html:not(.js) .js-only { display: none !important; }
   :root[data-season="halloween"] .node:not(.is-leaf) { border-radius: 16px; }
 }
 
-@media screen and (pointer: fine) {
-  :root[data-season="halloween"] { cursor: url("assets/pumpkin.svg") 16 4, default; }
-  :root[data-season="halloween"] :is(a, button),
-  :root[data-season="halloween"] :is(a, button) * {
-    cursor: url("assets/pumpkin.svg") 16 4, pointer;
+.pumpkin-trail { display: none; }
+@media screen and (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  :root[data-season="halloween"] .pumpkin-trail:not([hidden]) {
+    display: block; position: fixed; inset: 0; z-index: 100;
+    overflow: hidden; pointer-events: none; user-select: none;
+  }
+  .pumpkin-trail > span {
+    position: absolute; width: 18px; height: 18px;
+    background: url("assets/pumpkin.svg") center / contain no-repeat;
+    animation: pumpkin-fade 0.65s linear forwards;
+  }
+  @keyframes pumpkin-fade {
+    from { opacity: 0.8; transform: translate(-50%, -50%) scale(1); }
+    to { opacity: 0; transform: translate(-50%, -50%) scale(0.5); }
   }
 }
 

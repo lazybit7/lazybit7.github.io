@@ -16,8 +16,82 @@
     syncThemeButton();
   });
 
+  const pumpkinTrail = document.querySelector(".pumpkin-trail");
+  const pumpkinTrailMedia = window.matchMedia(
+    "(hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference)"
+  );
+  const TRAIL_GAP = 28;
+  const TRAIL_LIMIT = 20;
+  let trailFrame = null;
+  let lastTrailPoint = null;
+  let pendingTrailPoint = null;
+  function clearPumpkinTrail() {
+    if (trailFrame !== null) cancelAnimationFrame(trailFrame);
+    trailFrame = null;
+    lastTrailPoint = null;
+    pendingTrailPoint = null;
+    pumpkinTrail.replaceChildren();
+    pumpkinTrail.hidden = true;
+  }
+  function stampPumpkin(x, y) {
+    while (pumpkinTrail.childElementCount >= TRAIL_LIMIT) pumpkinTrail.firstElementChild.remove();
+    const pumpkin = document.createElement("span");
+    pumpkin.style.left = `${x}px`;
+    pumpkin.style.top = `${y}px`;
+    pumpkin.addEventListener("animationend", () => {
+      pumpkin.remove();
+      if (!pumpkinTrail.childElementCount) pumpkinTrail.hidden = true;
+    }, { once: true });
+    pumpkinTrail.hidden = false;
+    pumpkinTrail.appendChild(pumpkin);
+  }
+  document.addEventListener("pointermove", (event) => {
+    if (root.dataset.season !== "halloween" || !pumpkinTrailMedia.matches || event.pointerType !== "mouse") {
+      clearPumpkinTrail();
+      return;
+    }
+    pendingTrailPoint = {
+      x: Math.max(0, Math.min(event.clientX, window.innerWidth)),
+      y: Math.max(0, Math.min(event.clientY, window.innerHeight)),
+    };
+    if (trailFrame !== null) return;
+    trailFrame = requestAnimationFrame(() => {
+      trailFrame = null;
+      if (!lastTrailPoint) {
+        stampPumpkin(pendingTrailPoint.x, pendingTrailPoint.y);
+        lastTrailPoint = pendingTrailPoint;
+        return;
+      }
+      const dx = pendingTrailPoint.x - lastTrailPoint.x;
+      const dy = pendingTrailPoint.y - lastTrailPoint.y;
+      const distance = Math.hypot(dx, dy);
+      const steps = Math.floor(distance / TRAIL_GAP);
+      if (!steps) return;
+      for (let step = Math.max(1, steps - TRAIL_LIMIT + 1); step <= steps; step++) {
+        const fraction = step * TRAIL_GAP / distance;
+        stampPumpkin(lastTrailPoint.x + dx * fraction, lastTrailPoint.y + dy * fraction);
+      }
+      const fraction = steps * TRAIL_GAP / distance;
+      lastTrailPoint = {
+        x: lastTrailPoint.x + dx * fraction,
+        y: lastTrailPoint.y + dy * fraction,
+      };
+    });
+  }, { passive: true });
+  document.addEventListener("pointerdown", (event) => {
+    if (event.pointerType !== "mouse") clearPumpkinTrail();
+  }, { passive: true });
+  root.addEventListener("pointerleave", clearPumpkinTrail);
+  window.addEventListener("blur", clearPumpkinTrail);
+  window.addEventListener("resize", clearPumpkinTrail);
+  window.addEventListener("pagehide", clearPumpkinTrail);
+  document.addEventListener("keydown", clearPumpkinTrail);
+  document.addEventListener("visibilitychange", clearPumpkinTrail);
+  pumpkinTrailMedia.addEventListener("change", clearPumpkinTrail);
+
   const seasonBtn = document.getElementById("season-toggle");
   const syncSeasonButton = () => {
+    clearPumpkinTrail();
     const halloween = root.dataset.season === "halloween";
     if (seasonBtn) {
       seasonBtn.setAttribute("aria-pressed", String(halloween));
