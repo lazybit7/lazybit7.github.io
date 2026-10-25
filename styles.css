@@ -162,7 +162,6 @@ html:not(.js) .js-only { display: none !important; }
   :root[data-season="halloween"] :is(a, button) * {
     cursor: url("assets/pumpkin.svg") 16 4, pointer;
   }
-  :root[data-season="halloween"] :is(p, h1, h2, h3, h4, pre, li, dt, dd) { cursor: text; }
 }
 
 /* Header */
