@@ -134,7 +134,7 @@
 
   const tree = document.getElementById("tree");
   if (!tree) return;
-  const svg = tree.querySelector(".tree-edges");
+  const svg = tree.querySelector("svg");
   const logEl = document.getElementById("log");
   const countEl = document.getElementById("push-count");
 
@@ -180,7 +180,6 @@
       btn.className = "node";
       btn.style.left = `${x}%`;
       btn.style.top = `${y}%`;
-      btn.dataset.node = i;
       if (i === 1) btn.classList.add("is-root");
       if (meta.section) btn.classList.add("is-section");
 
@@ -264,7 +263,7 @@
     document.querySelectorAll(".node.is-open").forEach((n) => n.classList.remove("is-open"));
     const nodeId = Object.keys(META).find((k) => META[k].section === id);
     if (nodeId) nodes[nodeId].el.classList.add("is-open");
-    document.querySelectorAll(".nav-list a").forEach((a) => {
+    document.querySelectorAll("nav a").forEach((a) => {
       if (a.getAttribute("href") === `#${id}`) a.setAttribute("aria-current", "true");
       else a.removeAttribute("aria-current");
     });
@@ -317,7 +316,7 @@
     Object.values(META).filter((meta) => meta.section).forEach((meta) =>
       document.getElementById(meta.section).classList.add("is-revealed")
     );
-    document.querySelectorAll(".nav-list a").forEach((a) => a.removeAttribute("aria-current"));
+    document.querySelectorAll("nav a").forEach((a) => a.removeAttribute("aria-current"));
     document.querySelectorAll(".node.is-open").forEach((n) => n.classList.remove("is-open"));
     logCompletion();
   }
@@ -332,7 +331,7 @@
       render(i);
     }
     document.querySelectorAll(".lazy-section").forEach((s) => s.classList.remove("is-revealed"));
-    document.querySelectorAll(".nav-list a").forEach((a) => a.removeAttribute("aria-current"));
+    document.querySelectorAll("nav a").forEach((a) => a.removeAttribute("aria-current"));
     logEl.innerHTML = "";
     log(`update(<span class="hl">[0,7]</span>, reveal) → tagged root only. waiting for a query…`);
   }
@@ -355,11 +354,16 @@
   const isModifiedClick = (e) =>
     e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey;
 
-  document.querySelectorAll("a[data-node]").forEach((a) => {
+  const sectionNode = (hash) =>
+    Object.keys(META).find((k) => META[k].section && `#${META[k].section}` === hash);
+
+  document.querySelectorAll('a[href^="#"]').forEach((a) => {
+    const node = sectionNode(a.getAttribute("href"));
+    if (!node) return;
     a.addEventListener("click", (e) => {
       if (isModifiedClick(e)) return;
       e.preventDefault();
-      enqueue(Number(a.dataset.node), { scroll: true });
+      enqueue(Number(node), { scroll: true });
     });
   });
 
@@ -374,7 +378,7 @@
       queue = queue.then(() => openSection("lazy", { scroll: true, pushHistory: false }));
       return;
     }
-    const fromHash = Object.keys(META).find((k) => META[k].section && `#${META[k].section}` === location.hash);
+    const fromHash = sectionNode(location.hash);
     if (fromHash) enqueue(Number(fromHash), { scroll: true, animate: false, pushHistory: false });
   }
 
